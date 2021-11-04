@@ -20,13 +20,19 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.mak.pcr.DatabaseConnection;
 import com.mak.pcr.R;
 import com.mak.pcr.Utility;
 import com.mak.pcr.dbentities.Faculty;
+import com.mak.pcr.dbentities.Student;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Random;
 
 public class CreateStudentFragment extends Fragment {
 
@@ -44,7 +50,7 @@ public class CreateStudentFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Get signup fragment
-        View _root = inflater.inflate(R.layout.fragment_create_faculty, container, false);
+        View _root = inflater.inflate(R.layout.fragment_create_student, container, false);
 
         // Get UI elements
         inputLayout_fname = _root.findViewById(R.id.inpLayout_fname);
@@ -77,32 +83,40 @@ public class CreateStudentFragment extends Fragment {
                 _sGender = radiobtn_selectedGender.getText().toString();
 
                 if (TextUtils.isEmpty(_sFName)) {
-                    edt_fname.setError("First Name is Required");
-                    edt_fname.requestFocus();
+                    inputLayout_fname.setError("First Name is Required");
+                    inputLayout_fname.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(_sLName)) {
-                    edt_lname.setError("Last Name is Required");
-                    edt_lname.requestFocus();
+                    inputLayout_lname.setError("Last Name is Required");
+                    inputLayout_lname.requestFocus();
                     return;
                 }
 
                 if (TextUtils.isEmpty(_sEmail)) {
-                    edt_email.setError("Email is Required");
-                    edt_email.requestFocus();
+                    inputLayout_email.setError("Email is Required");
+                    inputLayout_email.requestFocus();
                     return;
                 }
                 if(!Patterns.EMAIL_ADDRESS.matcher(_sEmail).matches()) {
-                    edt_email.setError("Enter a Valid Email");
-                    edt_email.requestFocus();
+                    inputLayout_email.setError("Enter a Valid Email");
+                    inputLayout_email.requestFocus();
                     return;
                 }
 
                 if (TextUtils.isEmpty(_sContact)) {
-                    edt_pswd.setError("Contact Number is Required");
-                    edt_pswd.requestFocus();
+                    inputLayout_phone.setError("Contact Number is Required");
+                    inputLayout_phone.requestFocus();
                     return;
-                }   
+                }
+
+                _studentId = "";
+                char[] numbers = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
+                for (int i = 0; i < 7; i++){
+                    int randomInt = (int) Math.ceil(Math.random() * 9);
+                    _studentId += numbers[randomInt];
+                }
+                db.addToDbReference("Student", _studentId, new Student(_studentId, _sFName, _sLName, _sGender, _sContact, _sEmail, "1"));
 
 
             }

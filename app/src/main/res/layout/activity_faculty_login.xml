@@ -10,6 +10,19 @@
     android:padding="10dp"
     android:background="@color/color_dark">
 
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginTop="15dp"
+        />
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout_email"
         android:layout_width="match_parent"
@@ -22,7 +35,7 @@
         app:hintTextColor="@color/white"
         app:startIconTint="@color/white"
         app:helperTextTextColor="@color/white"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         app:errorEnabled="true"
         >
 
@@ -90,7 +103,8 @@
             android:layout_marginEnd="10dp"
             android:text="Clear"
             app:layout_constraintEnd_toStartOf="@+id/btn_login"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="0dp"
+            tools:ignore="MissingConstraints" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"
@@ -99,7 +113,7 @@
             android:text="Login"
             app:layout_constraintEnd_toEndOf="parent"
             tools:layout_editor_absoluteY="0dp"
-            />
+            tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
