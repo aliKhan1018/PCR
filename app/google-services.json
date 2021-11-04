@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "452943108923",
+    "firebase_url": "https://pcrdb-9ed55-default-rtdb.firebaseio.com",
+    "project_id": "pcrdb-9ed55",
+    "storage_bucket": "pcrdb-9ed55.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452943108923:android:b90150ae0957451fb5751e",
+        "android_client_info": {
+          "package_name": "com.mak.pcr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452943108923-mr2dnodt1io4crmcal4hv2tqnrtvm0bn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR60iLM2aAgOe4KEqa_-VgLNCB9RAh1is"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452943108923-mr2dnodt1io4crmcal4hv2tqnrtvm0bn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

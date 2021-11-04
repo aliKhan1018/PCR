@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_timings">
+        <item>Select a time slot…</item>
+        <item>09:00 AM - 11:00 AM</item>
+        <item>11:00 AM - 13:00 PM</item>
+        <item>13:00 PM - 15:00 PM</item>
+        <item>15:00 PM - 17:00 PM</item>
+        <item>17:00 PM - 19:00 PM</item>
+        <item>19:00 PM - 21:00 PM</item>
+    </string-array>
+</resources>

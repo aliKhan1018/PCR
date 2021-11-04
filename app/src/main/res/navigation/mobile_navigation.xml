@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.mak.pcr.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_create_faculty"
+        android:name="com.mak.pcr.ui.createfaculty.CreateFacultyFragment"
+        android:label="Create Faculty"
+        tools:layout="@layout/fragment_create_faculty" />
+
+    <fragment
+        android:id="@+id/nav_list_faculty"
+        android:name="com.mak.pcr.ui.listfaculty.ListFacultyFragment"
+        android:label="List Faculty"
+        tools:layout="@layout/fragment_list_faculty" />
+
+    <fragment
+        android:id="@+id/nav_assign_batch"
+        android:name="com.mak.pcr.ui.assignfaculty.AssignFacultyFragment"
+        android:label="Assign Batch"
+        tools:layout="@layout/fragment_assign_faculty" />
+
+    <fragment
+        android:id="@+id/nav_create_batch"
+        android:name="com.mak.pcr.ui.createbatch.CreateBatchFragment"
+        android:label="Create Batch"
+        tools:layout="@layout/fragment_create_batch" />
+
+    <fragment
+        android:id="@+id/nav_list_batch"
+        android:name="com.mak.pcr.ui.listbatch.ListBatchFragment"
+        android:label="List Batch"
+        tools:layout="@layout/fragment_list_batch" />
+
+
+</navigation>
