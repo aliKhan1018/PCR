@@ -29,6 +29,7 @@ import java.util.ArrayList;
 public class ListFacultyFragment extends Fragment {
     ListView lstvw_faculty;
     ArrayList<Faculty> data;
+    ArrayList<String> ids;
 
     DatabaseConnection db;
 
@@ -49,8 +50,9 @@ public class ListFacultyFragment extends Fragment {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for(DataSnapshot dss : snapshot.getChildren()){
                     data.add( dss.getValue( Faculty.class ) );
+                    ids.add( dss.getKey() );
                 }
-                FacultyAdapter adapter = new FacultyAdapter( data, container.getContext() );
+                FacultyAdapter adapter = new FacultyAdapter( data, ids, container.getContext() );
                 lstvw_faculty.setAdapter( adapter );
             }
 

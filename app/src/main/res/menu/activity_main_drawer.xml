@@ -13,8 +13,7 @@
         <item
             android:id="@+id/nav_faculty"
             android:title="Faculty"
-            app:showAsAction="ifRoom"
-            >
+            app:showAsAction="ifRoom">
             <menu>
                 <item
                     android:id="@+id/nav_create_faculty"
@@ -55,11 +54,6 @@
             </menu>
 
         </item>
-        <item
-            android:id="@+id/nav_create_student"
-            android:icon="@drawable/ic_baseline_view_list_24"
-            android:title="Create Student"
-            />
 
     </group>
 </menu>

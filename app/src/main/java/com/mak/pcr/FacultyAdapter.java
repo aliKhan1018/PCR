@@ -14,11 +14,14 @@ import java.util.ArrayList;
 public class FacultyAdapter extends BaseAdapter {
 
     ArrayList<Faculty> _data;
+    ArrayList<String> _ids;
     Context _context;
 
-    public FacultyAdapter(ArrayList<Faculty> data, Context context) {
-        this._data = data;
-        this._context = context;
+
+    public FacultyAdapter(ArrayList<Faculty> _data, ArrayList<String> _ids, Context _context) {
+        this._data = _data;
+        this._ids = _ids;
+        this._context = _context;
     }
 
     @Override
@@ -41,11 +44,14 @@ public class FacultyAdapter extends BaseAdapter {
         LayoutInflater layoutInflater = LayoutInflater.from(_context);
         convertView = layoutInflater.inflate(R.layout.vw_faculty,null);
 
+        TextView txtvw_facultyId = convertView.findViewById(R.id.txtvw_facultyId);
         TextView txtvw_facultyName = convertView.findViewById(R.id.txtvw_facultyName);
         TextView txtvw_facultyEmail = convertView.findViewById(R.id.txtvw_facultyEmail);
 
+        txtvw_facultyId.setText(_ids.get(position));
         txtvw_facultyName.setText("Name: " + _data.get(position).getFname());
         txtvw_facultyEmail.setText("Email: " + _data.get(position).email);
+
         //TODO status
 
         return convertView;
