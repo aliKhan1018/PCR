@@ -1,5 +1,6 @@
 package com.mak.pcr;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -9,16 +10,29 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.mak.pcr.databinding.ActivityFacultyMainBinding;
 import com.mak.pcr.databinding.ActivityMainBinding;
+import com.mak.pcr.dbentities.Faculty;
 
 public class FacultyMainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityFacultyMainBinding binding;
+
+    TextView txtvw_facultyName, txtvw_facultyEmail;
+    Button btn_signout;
+    DatabaseConnection db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +40,9 @@ public class FacultyMainActivity extends AppCompatActivity {
 
         binding = ActivityFacultyMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        db = new DatabaseConnection();
+
 
         setSupportActionBar(binding.appBarFaculty.toolbar);
 //        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
@@ -35,7 +52,7 @@ public class FacultyMainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
-        DrawerLayout drawer = binding.drawerLayout;
+        DrawerLayout drawer = binding.facultyDrawerLayout;
         NavigationView navigationView = binding.navViewFaculty;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -43,7 +60,7 @@ public class FacultyMainActivity extends AppCompatActivity {
                 R.id.nav_home)
                 .setOpenableLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_faculty);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
@@ -60,6 +77,40 @@ public class FacultyMainActivity extends AppCompatActivity {
                     .setCancelable(false)
                     .show();
         }
+
+//        btn_signout = navigationView.findViewById(R.id.btn_signout);
+//        btn_signout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Utility.MakeToast(FacultyMainActivity.this, "Signing out...", 0);
+//                db.get_firebaseAuth().signOut();
+//                startActivity( new Intent( FacultyMainActivity.this, FacultyLogin.class ));
+//                finish();
+//            }
+//        });
+
+        String _id = db.get_firebaseAuth().getUid();
+
+        db.get_dbReference("Faculty").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.hasChild(_id)){
+                    Faculty _f = snapshot.child(_id).getValue( Faculty.class );
+
+                    txtvw_facultyName = navigationView.findViewById(R.id.txtvw_facultyName);
+                    txtvw_facultyEmail = navigationView.findViewById(R.id.txtvw_facultyEmail);
+
+                    txtvw_facultyEmail.setText(_f.getEmail());
+                    txtvw_facultyName.setText(_f.getFullName());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
 //    @Override
@@ -71,7 +122,7 @@ public class FacultyMainActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_faculty);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }

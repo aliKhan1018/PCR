@@ -35,6 +35,8 @@ public class FacultyLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faculty_login);
 
+        db = new DatabaseConnection();
+
         inputLayout_email = findViewById(R.id.inputLayout_email);
         inputLayout_pswd = findViewById(R.id.inputLayout_pswd);
         edt_email = findViewById(R.id.edt_email);

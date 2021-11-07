@@ -69,22 +69,7 @@ public class CreateFacultyFragment extends Fragment {
 
         db = new DatabaseConnection();
         firebaseAuth = db.get_firebaseAuth();
-
-//        inputLayout_pswd.setEndIconOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Vibrator _v = (Vibrator) container.getContext().getSystemService(Context.VIBRATOR_SERVICE);
-//                _v.vibrate(50);
-//            }
-//        });
-//
-//        inputLayout_confirmPswd.setEndIconOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Vibrator _v = (Vibrator) container.getContext().getSystemService(Context.VIBRATOR_SERVICE);
-//                _v.vibrate(50);
-//            }
-//        });
+        
 
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,7 +131,7 @@ public class CreateFacultyFragment extends Fragment {
                         if(task.isSuccessful()){
                             Utility.MakeToast(container.getContext(), "Creating...", 0);
 
-                            Faculty _f = new Faculty(_sFName, _sLName, _sEmail, _sGender);
+                            Faculty _f = new Faculty(_sFName, _sLName, _sGender, _sEmail);
                             String _id = task.getResult().getUser().getUid();
 
                             db.addToDbReference("Faculty", _id, _f).addOnCompleteListener(new OnCompleteListener<Void>() {

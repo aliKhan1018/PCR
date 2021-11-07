@@ -15,5 +15,10 @@ public class Faculty extends Person{
         return email;
     }
 
+    public String getFullName(){
+        String _prefix = this.gender.matches("Male") ? "Sir" : "Miss";
+        return _prefix + " " + this.fname + " " + this.lname;
+    }
+
 }
 
