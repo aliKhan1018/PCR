@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.mak.pcr.DatabaseConnection;
 import com.mak.pcr.R;
+import com.mak.pcr.Utility;
 import com.mak.pcr.dbentities.Batch;
 import com.mak.pcr.dbentities.Student;
 
@@ -89,7 +90,7 @@ public class CreateStudentFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        })
+        });
 
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +101,7 @@ public class CreateStudentFragment extends Fragment {
                 _lName = edt_lname.getText().toString();
                 _email = edt_email.getText().toString();
                 _contact = edt_phone.getText().toString();
-
+                _batch_id = spner_batch.getSelectedItem().toString();
 
 
                 int _iSelectedRadioBtnId = radiogrp_genders.getCheckedRadioButtonId();
@@ -137,6 +138,13 @@ public class CreateStudentFragment extends Fragment {
                 if (_contact.length() != 11) {
                     inputLayout_phone.setError("Contact Number must be 11 digits");
                     inputLayout_phone.requestFocus();
+                    return;
+                }
+
+                if (_batch_id.matches("Select a Batch...")) {
+//                    spner_batch.setError("Select a batch to assign");
+                    Utility.MakeToast(container.getContext(), "Select a batch to assign", 0);
+                    spner_batch.requestFocus();
                     return;
                 }
 
