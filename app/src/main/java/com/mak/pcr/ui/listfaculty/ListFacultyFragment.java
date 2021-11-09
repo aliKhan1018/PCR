@@ -44,6 +44,7 @@ public class ListFacultyFragment extends Fragment {
         db = new DatabaseConnection();
 
         data = new ArrayList<Faculty>();
+        ids = new ArrayList<String>();
 
         db.get_dbReference("Faculty").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

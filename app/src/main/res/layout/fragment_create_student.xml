@@ -158,11 +158,16 @@
         android:text="Select a Batch"
         android:textColor="@color/white"/>
 
-    <Spinner
-        android:id="@+id/spner_batch"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        app:cardCornerRadius="10dp">
+        <Spinner
+            android:id="@+id/spner_batch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_marginTop="10dp"

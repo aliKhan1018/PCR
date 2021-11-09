@@ -2,10 +2,12 @@ package com.mak.pcr.ui.faculty.createstudent;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -42,7 +44,6 @@ public class CreateStudentFragment extends Fragment {
 
     DatabaseConnection db;
     DatabaseReference dbRefFaculty;
-    FirebaseAuth firebaseAuth;
 
     ArrayList<String> batches;
 
@@ -68,7 +69,6 @@ public class CreateStudentFragment extends Fragment {
         btn_clear = _root.findViewById(R.id.btn_clear);
 
         db = new DatabaseConnection();
-        firebaseAuth = db.get_firebaseAuth();
 
         batches = new ArrayList<>();
         batches.add("Select a Batch...");
@@ -80,10 +80,14 @@ public class CreateStudentFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dss : snapshot.getChildren()){
                     Batch _b = dss.getValue( Batch.class );
-                    if(_b.faculty_id.matches(_f_id)){
-                        batches.add( _b.batchCode );
+                    if(_b.faculty_id != null && !_b.faculty_id.matches("")){
+                        if(_b.faculty_id.matches(_f_id)){
+                            batches.add( _b.batchCode );
+                        }
                     }
                 }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(container.getContext(), R.layout.spinner_item, batches);
+                spner_batch.setAdapter(adapter);
             }
 
             @Override

@@ -78,6 +78,9 @@ public class FacultyMainActivity extends AppCompatActivity {
                     .show();
         }
 
+
+
+
 //        btn_signout = navigationView.findViewById(R.id.btn_signout);
 //        btn_signout.setOnClickListener(new View.OnClickListener() {
 //            @Override

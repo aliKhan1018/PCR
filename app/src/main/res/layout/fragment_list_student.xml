@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@color/color_dark">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="All Students"
+        android:textColor="@color/white"
+        android:typeface="serif"
+        android:textSize="24sp"/>
+
+    <ListView
+        android:id="@+id/lstvw_student"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        />
+
+
+</LinearLayout>
