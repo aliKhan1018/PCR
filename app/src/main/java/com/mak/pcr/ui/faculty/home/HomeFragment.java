@@ -1,5 +1,6 @@
 package com.mak.pcr.ui.faculty.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -16,6 +18,7 @@ import com.mak.pcr.DatabaseConnection;
 import com.mak.pcr.DateTimeManager;
 import com.mak.pcr.R;
 import com.mak.pcr.dbentities.Batch;
+import com.mak.pcr.ui.faculty.batchattendence.BatchAttendenceFragment;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,6 +34,8 @@ public class HomeFragment extends Fragment {
 
     ArrayList<Batch> batches;
 
+    MaterialCardView batchCodeCard;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_faculty_home, container, false);
@@ -42,6 +47,7 @@ public class HomeFragment extends Fragment {
         txtvw_batchInSession = root.findViewById(R.id.txtvw_batchInSession);
         txtvw_nextSession = root.findViewById(R.id.txtvw_nextSession);
         txtvw_nextSessionTime = root.findViewById(R.id.txtvw_nextSessionTime);
+        batchCodeCard = root.findViewById(R.id.batchCode);
 
         SimpleDateFormat _dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date _date = null;
@@ -87,6 +93,15 @@ public class HomeFragment extends Fragment {
 
            }
        });
+
+        batchCodeCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(container.getContext(), BatchAttendenceFragment.class);
+                i.putExtra("batchcode", txtvw_batchInSession.getText().toString());
+                startActivity(i);
+            }
+        });
 
 
         return root;
