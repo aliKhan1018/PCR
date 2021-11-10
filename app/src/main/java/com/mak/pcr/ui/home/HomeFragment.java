@@ -64,16 +64,12 @@ public class HomeFragment extends Fragment {
                 && !_day.matches("Sunday") ?
                 "MWF" : "TTS";
 
-        Log.println(Log.DEBUG, "Time", _days);
-
 
         db.get_dbReference("Batch").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dss : snapshot.getChildren()){
                     Batch _b = dss.getValue( Batch.class );
-
-                    Log.println(Log.DEBUG, "Time", _b.batchCode + " Days: " + _b.days);
 
                     if (!_b.days.matches(_days) || _b.faculty_id == null || _b.faculty_id.matches("")) {
                         continue;
@@ -86,8 +82,6 @@ public class HomeFragment extends Fragment {
 
                     _startTime = _startTime.substring(0, 5) + ":00";
                     _endTime = _endTime.substring(0, 5) + ":00";
-
-                    Log.println(Log.DEBUG, "Time", _startTime + " " + _endTime);
 
                     Date time1 = null;
                     try {
@@ -113,7 +107,6 @@ public class HomeFragment extends Fragment {
                     Date d = calendar3.getTime();
                     String[] _splitDate = d.toString().split(" ");
                     String _currentTime = _splitDate[3];
-                    Log.println(Log.DEBUG, "Time", _currentTime + " current time");
 
                     Date timeNow = null;
                     try {
@@ -123,8 +116,6 @@ public class HomeFragment extends Fragment {
                     }
                     calendar3.setTime(timeNow);
                     calendar3.add(Calendar.AM, 1);
-
-                    Log.println(Log.DEBUG, "Time", timeNow.toString());
 
                     if (timeNow.after(time1) && timeNow.before(time2)) {
                         batchesInSession++;

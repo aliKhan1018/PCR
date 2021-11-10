@@ -16,6 +16,7 @@
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/fragment_create_batch.xml" value="0.33" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/fragment_create_faculty.xml" value="0.25" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/fragment_create_student.xml" value="0.25" />
+        <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/fragment_faculty_batch_list.xml" value="0.1609375" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/fragment_faculty_home.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/fragment_home.xml" value="0.13272543059777103" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/fragment_list_batch.xml" value="0.13272543059777103" />
@@ -24,7 +25,7 @@
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/nav_header_faculty.xml" value="0.33" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/nav_header_main.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/spinner_item.xml" value="0.254981884057971" />
-        <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/vw_batch.xml" value="0.10778985507246377" />
+        <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/vw_batch.xml" value="0.5" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/vw_faculty.xml" value="0.25" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/vw_student.xml" value="0.33" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/menu/activity_faculty_drawer.xml" value="0.27291666666666664" />

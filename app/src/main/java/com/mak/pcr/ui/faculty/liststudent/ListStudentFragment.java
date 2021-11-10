@@ -51,34 +51,28 @@ public class ListStudentFragment extends Fragment {
                     Student _s = dss.getValue( Student.class  );
                     db.get_dbReference("Batch").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot _dss : snapshot.getChildren()){
+                        public void onDataChange(@NonNull DataSnapshot _snapshot) {
+                            for (DataSnapshot _dss : _snapshot.getChildren()){
                                 Batch _b = _dss.getValue(Batch.class);
-                                if(_dss.getKey().matches(_s.getBatch_id()+" (TTS)")){
-                                    if(_f_id.matches(_b.faculty_id)){
+                                boolean b = _b.batchCode.equals(_s.batch_id);
+                                if(b){
+                                    if(_f_id.equals(_b.faculty_id)){
                                         students.add(_s);
-
                                     }
-//                                    Utility.MakeToast(container.getContext(), _b.batchCode, 0);
                                 }
                             }
+                            StudentAdapter adapter = new StudentAdapter(students, container.getContext());
+                            lstvw_student.setAdapter(adapter);
                         }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
+                        public void onCancelled(@NonNull DatabaseError error) { }
                     });
-
                 }
-                StudentAdapter adapter = new StudentAdapter(students, container.getContext());
-                lstvw_student.setAdapter(adapter);
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) { }
         });
 
         return _root;

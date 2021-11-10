@@ -103,7 +103,7 @@ public class CreateBatchFragment extends Fragment {
                             Utility.MakeToast(container.getContext(), "Batch already exists", 0);
                         }
                         else{
-                            db.addToDbReference("Batch", _batchCodeWithDays, new Batch(_sBatchCode, _sTiming, _sDays)).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            db.addToDbReference("Batch", _batchCodeWithDays, new Batch(_batchCodeWithDays, _sTiming, _sDays)).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull @NotNull Task<Void> task) {
                                     if(task.isSuccessful()){

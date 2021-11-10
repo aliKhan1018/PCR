@@ -2,7 +2,7 @@ package com.mak.pcr.dbentities;
 
 public class Student extends Person{
 
-    String studentId, parentContact, parentEmail, batch_id;
+    public String studentId, parentContact, parentEmail, batch_id;
 
     public Student(){}
 
@@ -15,15 +15,15 @@ public class Student extends Person{
     }
 
     public String getStudentId() {
-        return studentId;
+        return this.studentId;
     }
 
     public String getParentContact() {
-        return parentContact;
+        return this.parentContact;
     }
 
     public String getParentEmail() {
-        return parentEmail;
+        return this.parentEmail;
     }
 
     public String getBatch_id() {

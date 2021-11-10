@@ -16,9 +16,17 @@ public class BatchAdapter extends BaseAdapter {
     ArrayList<Batch> data;
     Context context;
 
+    String faculty;
+
     public BatchAdapter(ArrayList<Batch> data, Context context){
         this.data = data;
         this.context = context;
+    }
+
+    public BatchAdapter(ArrayList<Batch> data, Context context, String faculty){
+        this.data = data;
+        this.context = context;
+        this.faculty = faculty;
     }
 
     @Override
@@ -49,6 +57,10 @@ public class BatchAdapter extends BaseAdapter {
 
         txtvw_batchCode.setText("Batch Code: " + _currentBatch.batchCode);
         txtvw_batchTiming.setText("Time Slot: " + _currentBatch.timings + " (" + _currentBatch.days + ")");
+
+        if(this.faculty != null){
+            txtvw_batchFaculty.setText("Faculty: " + faculty);
+        }
 
         return convertView;
     }

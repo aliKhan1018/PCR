@@ -173,6 +173,7 @@
                         >
 
                         <TextView
+                            android:id="@+id/txtvw_nextSession"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:gravity="center"
@@ -183,6 +184,7 @@
                             />
 
                         <TextView
+                            android:id="@+id/txtvw_nextSessionTime"
                             android:layout_width="match_parent"
                             android:layout_height="25dp"
                             android:layout_marginTop="50dp"
