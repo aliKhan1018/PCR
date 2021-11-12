@@ -97,9 +97,8 @@ public class HomeFragment extends Fragment {
         batchCodeCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(container.getContext(), BatchAttendenceFragment.class);
-                i.putExtra("batchcode", txtvw_batchInSession.getText().toString());
-                startActivity(i);
+                //TODO open attendence fragment
+
             }
         });
 

@@ -2,6 +2,7 @@ package com.mak.pcr.ui.faculty.batchattendence;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class BatchAttendenceFragment extends AppCompatActivity {
+public class BatchAttendenceFragment extends Fragment {
 
     ListView lstvw_batch;
     ArrayList<Student> data;
@@ -36,11 +37,11 @@ public class BatchAttendenceFragment extends AppCompatActivity {
 
     @Nullable
     @Override
-    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_batch_attendence);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        lstvw_batch = findViewById(R.id.lstvw_batch);
+        View root = inflater.inflate(R.layout.fragment_batch_attendence, container, false);
+
+        lstvw_batch = root.findViewById(R.id.lstvw_batch);
 
         db = new DatabaseConnection();
 
@@ -48,9 +49,26 @@ public class BatchAttendenceFragment extends AppCompatActivity {
 
         String _f_id = db.get_firebaseAuth().getUid();
 
-        Intent i = getIntent();
-        String batchCode = i.getStringExtra("batchcode");
 
+        // TODO fetch batchcode
+        db.get_dbReference("Student").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dss : snapshot.getChildren()){
+                    Student s = dss.getValue(Student.class);
+                    data.add(s);
+                }
+                BatchAttendenceAdapter adapter = new BatchAttendenceAdapter(data, container.getContext());
+                lstvw_batch.setAdapter(adapter);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return root;
     }
+
 }
