@@ -129,6 +129,27 @@
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inpLayout_contact"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Contact Number"
+        android:textColorHint="@color/white"
+        app:hintTextColor="@color/white"
+        app:startIconDrawable="@drawable/ic_baseline_phone_24"
+        app:startIconTint="@color/theme_primary_variant"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -157,16 +178,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Female"
-            android:textColor="@color/white"
-
-            />
-
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/radiobtn_others"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Others"
             android:textColor="@color/white"
 
             />

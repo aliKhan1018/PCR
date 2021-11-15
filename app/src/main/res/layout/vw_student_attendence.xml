@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="16dp"
-                android:text="Student id: 1244965"
+                android:text="Student id: "
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
-                android:text="Name: Muhammad Ali Khan"
+                android:text="Name: "
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtvw_studentId" />
@@ -51,8 +51,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/linlay_btns"
+            android:visibility="visible"
             >
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_present"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -64,6 +67,7 @@
                 android:text="Present"/>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_absent"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -76,6 +80,28 @@
 
         </LinearLayout>
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardvw_marked"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="6dp"
+            android:textAlignment="center"
+            android:visibility="visible"
+            >
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Attendance Marked!"
+                android:drawableEnd="@drawable/ic_baseline_stars_24"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                />
+        </com.google.android.material.card.MaterialCardView>
     </com.google.android.material.card.MaterialCardView>
+
 
 </LinearLayout>

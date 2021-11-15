@@ -14,13 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PCR">
         <activity
+            android:name=".UpdateStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BatchAttendanceActivity"
+            android:exported="false" />
+        <activity
             android:name=".FacultyMainActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.PCR.NoActionBar"/>
+            android:theme="@style/Theme.PCR.NoActionBar" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

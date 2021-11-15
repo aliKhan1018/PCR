@@ -35,7 +35,7 @@ public class DateTimeManager {
 
         Date timeNow = null;
         try {
-            timeNow = new SimpleDateFormat("HH:mm:ss").parse(_currentTime);
+            timeNow = new SimpleDateFormat("HH:mm:ss").parse("09:30:00");
         } catch (ParseException e) {
             e.printStackTrace();
         }

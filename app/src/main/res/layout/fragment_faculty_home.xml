@@ -77,7 +77,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="55dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/batchCode"
@@ -96,7 +97,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:gravity="center"
-                            android:text="201910b3 (TTS)"
+                            android:text=""
                             android:textColor="@color/theme_primary_variant"
                             android:textSize="20sp"
 
@@ -114,55 +115,8 @@
                             android:textStyle="bold" />
                     </com.google.android.material.card.MaterialCardView>
 
-                </LinearLayout>
-
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_row="1"
-                android:layout_column="0"
-                android:layout_columnSpan="2"
-                android:layout_columnWeight="1"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp"
-                android:backgroundTint="@color/theme_primary"
-                >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Upcoming Sessions"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="30dp"
-                    android:text="Remaining Sessions: 1"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
-
-                <LinearLayout
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="55dp"
-                    android:layout_marginBottom="10dp">
-
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/totalSessions"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"
@@ -174,24 +128,22 @@
                         >
 
                         <TextView
-                            android:id="@+id/txtvw_nextSession"
+                            android:id="@+id/txtvw_totalSessions"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:gravity="center"
-                            android:text="201910b3 (TTS)"
                             android:textColor="@color/theme_primary_variant"
                             android:textSize="20sp"
 
                             />
 
                         <TextView
-                            android:id="@+id/txtvw_nextSessionTime"
                             android:layout_width="match_parent"
                             android:layout_height="25dp"
                             android:layout_marginTop="50dp"
                             android:background="@color/color_dark"
                             android:gravity="center"
-                            android:text="11:00 - 13:00"
+                            android:text="Sessions for the day (DAYS)"
                             android:textColor="@color/white"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -201,6 +153,7 @@
 
 
             </com.google.android.material.card.MaterialCardView>
+
 
 
 

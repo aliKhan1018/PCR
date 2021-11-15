@@ -44,13 +44,15 @@ public class FacultyAdapter extends BaseAdapter {
         LayoutInflater layoutInflater = LayoutInflater.from(_context);
         convertView = layoutInflater.inflate(R.layout.vw_faculty,null);
 
-        TextView txtvw_facultyId = convertView.findViewById(R.id.txtvw_facultyId);
+//        TextView txtvw_facultyId = convertView.findViewById(R.id.txtvw_facultyId);
         TextView txtvw_facultyName = convertView.findViewById(R.id.txtvw_facultyName);
         TextView txtvw_facultyEmail = convertView.findViewById(R.id.txtvw_facultyEmail);
+        TextView txtvw_facultyContact = convertView.findViewById(R.id.txtvw_facultyContact);
 
-        txtvw_facultyId.setText(_ids.get(position));
-        txtvw_facultyName.setText("Name: " + _data.get(position).getFname());
+//        txtvw_facultyId.setText(_ids.get(position));
+        txtvw_facultyName.setText("Name: " + _data.get(position).getFullName());
         txtvw_facultyEmail.setText("Email: " + _data.get(position).email);
+        txtvw_facultyEmail.setText("Contact: " + _data.get(position).contact);
 
         //TODO status
 

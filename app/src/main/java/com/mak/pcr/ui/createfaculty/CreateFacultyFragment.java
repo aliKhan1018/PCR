@@ -35,9 +35,9 @@ import org.jetbrains.annotations.NotNull;
 public class CreateFacultyFragment extends Fragment {
 
     TextInputLayout inputLayout_fname, inputLayout_lname, inputLayout_email,
-            inputLayout_pswd, inputLayout_confirmPswd;
+            inputLayout_pswd, inputLayout_confirmPswd, inputLayout_contact;
     EditText edt_fname, edt_lname, edt_email,
-            edt_pswd, edt_confirmPswd;
+            edt_pswd, edt_confirmPswd, edt_contact;
     RadioGroup radiogrp_genders;
     Button btn_create, btn_clear;
 
@@ -57,30 +57,32 @@ public class CreateFacultyFragment extends Fragment {
         inputLayout_lname = _root.findViewById(R.id.inpLayout_lname);
         inputLayout_email = _root.findViewById(R.id.inpLayout_email);
         inputLayout_pswd = _root.findViewById(R.id.inpLayout_pswd);
+        inputLayout_contact = _root.findViewById(R.id.inpLayout_contact);
         inputLayout_confirmPswd = _root.findViewById(R.id.inpLayout_confirmPswd);
         edt_fname = _root.findViewById(R.id.edt_fname);
         edt_lname = _root.findViewById(R.id.edt_lname);
         edt_email = _root.findViewById(R.id.edt_email);
         edt_pswd = _root.findViewById(R.id.edt_pswd);
         edt_confirmPswd = _root.findViewById(R.id.edt_confirmPswd);
+        edt_contact = _root.findViewById(R.id.edt_contact);
         radiogrp_genders = _root.findViewById(R.id.radiogrp_genders);
         btn_create = _root.findViewById(R.id.btn_assign);
         btn_clear = _root.findViewById(R.id.btn_clear);
 
         db = new DatabaseConnection();
         firebaseAuth = db.get_firebaseAuth();
-        
 
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String _sFName, _sLName, _sEmail, _sPswd, _sConfirmPswd, _sGender;
+                String _sFName, _sLName, _sEmail, _sPswd, _sConfirmPswd, _sGender, _sContact;
                 _sFName = edt_fname.getText().toString();
                 _sLName = edt_lname.getText().toString();
                 _sEmail = edt_email.getText().toString();
                 _sPswd = edt_pswd.getText().toString();
                 _sConfirmPswd = edt_confirmPswd.getText().toString();
+                _sContact = edt_contact.getText().toString();
 
                 int _iSelectedRadioBtnId = radiogrp_genders.getCheckedRadioButtonId();
                 RadioButton radiobtn_selectedGender = _root.findViewById(_iSelectedRadioBtnId);
@@ -125,13 +127,19 @@ public class CreateFacultyFragment extends Fragment {
                     return;
                 }
 
+                if (_sContact.length() != 11) {
+                    edt_contact.setError("Contact number must be 11 digits");
+                    edt_contact.requestFocus();
+                    return;
+                }
+
                 db.CreateUser(_sEmail, _sPswd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Utility.MakeToast(container.getContext(), "Creating...", 0);
 
-                            Faculty _f = new Faculty(_sFName, _sLName, _sGender, _sEmail);
+                            Faculty _f = new Faculty(_sFName, _sLName, _sGender, _sEmail, _sContact);
                             String _id = task.getResult().getUser().getUid();
 
                             db.addToDbReference("Faculty", _id, _f).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -142,7 +150,6 @@ public class CreateFacultyFragment extends Fragment {
                                     }
                                 }
                             });
-
                         }
                         else{
                             Utility.MakeToast(container.getContext(), task.getException().getMessage(), 1);
@@ -161,12 +168,14 @@ public class CreateFacultyFragment extends Fragment {
                 edt_email.setText("");
                 edt_pswd.setText("");
                 edt_confirmPswd.setText("");
+                edt_contact.setText("");
 
                 inputLayout_pswd.setError(null);
                 inputLayout_email.setError(null);
                 inputLayout_confirmPswd.setError(null);
                 inputLayout_fname.setError(null);
                 inputLayout_lname.setError(null);
+                inputLayout_contact.setError(null);
 
                 edt_fname.requestFocus();
             }

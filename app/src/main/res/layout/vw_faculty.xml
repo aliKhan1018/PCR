@@ -24,9 +24,10 @@
             android:visibility="invisible"
             />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtvw_facultyName"
@@ -36,8 +37,6 @@
                 android:layout_marginLeft="10dp"
                 android:text="Name: Ali"
                 android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 />
 
             <com.google.android.material.textview.MaterialTextView
@@ -47,24 +46,50 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginLeft="10dp"
                 android:text="Email: ali@abc.com"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtvw_facultyName" />
+                android:textColor="@color/white" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtvw_facultyStatus"
+                android:id="@+id/txtvw_facultyContact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginBottom="16dp"
-                android:text="Status: Conducting batch 201910b2"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtvw_facultyEmail" />
+                android:text="Contact: 03302399258"
+                android:textColor="@color/white" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linlay_btns"
+                android:visibility="visible"
+                android:layout_marginTop="10dp"
+                >
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_update"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="4dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:text="Update"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_delete"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="8dp"
+                    android:text="Delete"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
 
 
     </com.google.android.material.card.MaterialCardView>

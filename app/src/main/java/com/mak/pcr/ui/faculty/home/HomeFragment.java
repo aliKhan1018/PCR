@@ -14,16 +14,15 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.mak.pcr.BatchAttendanceActivity;
 import com.mak.pcr.DatabaseConnection;
 import com.mak.pcr.DateTimeManager;
 import com.mak.pcr.R;
 import com.mak.pcr.dbentities.Batch;
-import com.mak.pcr.ui.faculty.batchattendence.BatchAttendenceFragment;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 public class HomeFragment extends Fragment {
@@ -44,9 +43,11 @@ public class HomeFragment extends Fragment {
 
         batches = new ArrayList<Batch>();
 
+        Intent i = new Intent(container.getContext(), BatchAttendanceActivity.class);
+
         txtvw_batchInSession = root.findViewById(R.id.txtvw_batchInSession);
-        txtvw_nextSession = root.findViewById(R.id.txtvw_nextSession);
-        txtvw_nextSessionTime = root.findViewById(R.id.txtvw_nextSessionTime);
+//        txtvw_nextSession = root.findViewById(R.id.txtvw_nextSession);
+//        txtvw_nextSessionTime = root.findViewById(R.id.txtvw_nextSessionTime);
         batchCodeCard = root.findViewById(R.id.batchCode);
 
         SimpleDateFormat _dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -62,6 +63,7 @@ public class HomeFragment extends Fragment {
         String _days = (_day.matches("Monday") || _day.matches("Wednesday") || _day.matches("Friday"))
                 && !_day.matches("Sunday") ?
                 "MWF" : "TTS";
+        _days = "Monday";
         String _f_id = db.get_firebaseAuth().getUid();
         txtvw_batchInSession.setText("N/A");
         db.get_dbReference("Batch").addValueEventListener(new ValueEventListener() {
@@ -83,6 +85,14 @@ public class HomeFragment extends Fragment {
 
                     if(DateTimeManager.IsBetween(_startTime, _endTime)){
                         txtvw_batchInSession.setText(_b.batchCode);
+                        i.putExtra("batchCode", _b.batchCode);
+                        batchCodeCard.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //TODO open attendence fragment
+                                startActivity(i);
+                            }
+                        });
                     }
                 }
 
@@ -94,13 +104,7 @@ public class HomeFragment extends Fragment {
            }
        });
 
-        batchCodeCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO open attendence fragment
 
-            }
-        });
 
 
         return root;
