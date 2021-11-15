@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PCR">
         <activity
+            android:name=".UpdateFacultyActivity"
+            android:exported="false" />
+        <activity
             android:name=".UpdateStudentActivity"
             android:exported="false" />
         <activity

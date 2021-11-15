@@ -42,7 +42,6 @@ public class BatchAttendanceActivity extends AppCompatActivity {
         txtvw_batchCode.setText(batchCode);
 
 
-        // TODO fetch batchcode
         db.get_dbReference("Student").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

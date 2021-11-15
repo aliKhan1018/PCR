@@ -10,12 +10,13 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/theme_primary_variant"
         app:cardCornerRadius="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
         >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtvw_batchCode"
@@ -23,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="10dp"
-                android:text="Batch Code: 201910b2 (MWF)"
+                android:text="Batch Code: "
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginLeft="10dp"
-                android:text="Time Slot: 00:00am = 00:00am"
+                android:text="Time Slot: "
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtvw_batchCode"/>
@@ -45,14 +46,40 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="16dp"
-                android:text="Faculty's Name: Sir Talksalot"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="Faculty's Name: "
+                android:textColor="@color/white" />
 
-                app:layout_constraintTop_toBottomOf="@+id/txtvw_batchTiming" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linlay_btns"
+                android:visibility="visible"
+                android:layout_marginTop="10dp"
+                >
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_update"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="4dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:text="Update"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_delete"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="8dp"
+                    android:text="Delete"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
 
     </com.google.android.material.card.MaterialCardView>
