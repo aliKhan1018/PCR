@@ -7,6 +7,23 @@ import java.util.Date;
 
 public class DateTimeManager {
 
+    public static String GetDays(){
+        SimpleDateFormat _dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date _date = null;
+        try {
+            _date = _dateFormat.parse(_dateFormat.format(System.currentTimeMillis()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        SimpleDateFormat _dayFormat = new SimpleDateFormat("EEEE");
+        String _day = _dayFormat.format(_date);
+
+        String _days = (_day.matches("Monday") || _day.matches("Wednesday") || _day.matches("Friday"))
+                && !_day.matches("Sunday") ?
+                "MWF" : "TTS";
+        return _days;
+    }
+
     public static boolean IsBetween(String startTime, String endTime){
         Date time1 = null;
         try {

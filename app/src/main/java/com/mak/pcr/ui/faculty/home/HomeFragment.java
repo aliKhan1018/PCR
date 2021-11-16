@@ -50,19 +50,21 @@ public class HomeFragment extends Fragment {
 //        txtvw_nextSessionTime = root.findViewById(R.id.txtvw_nextSessionTime);
         batchCodeCard = root.findViewById(R.id.batchCode);
 
-        SimpleDateFormat _dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Date _date = null;
-        try {
-            _date = _dateFormat.parse(_dateFormat.format(System.currentTimeMillis()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        SimpleDateFormat _dayFormat = new SimpleDateFormat("EEEE");
-        String _day = _dayFormat.format(_date);
+//        SimpleDateFormat _dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+//        Date _date = null;
+//        try {
+//            _date = _dateFormat.parse(_dateFormat.format(System.currentTimeMillis()));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        SimpleDateFormat _dayFormat = new SimpleDateFormat("EEEE");
+//        String _day = _dayFormat.format(_date);
+//
+//        String _days = (_day.matches("Monday") || _day.matches("Wednesday") || _day.matches("Friday"))
+//                && !_day.matches("Sunday") ?
+//                "MWF" : "TTS";
+        String _days = DateTimeManager.GetDays();
 
-        String _days = (_day.matches("Monday") || _day.matches("Wednesday") || _day.matches("Friday"))
-                && !_day.matches("Sunday") ?
-                "MWF" : "TTS";
         _days = "Monday";
         String _f_id = db.get_firebaseAuth().getUid();
         txtvw_batchInSession.setText("N/A");

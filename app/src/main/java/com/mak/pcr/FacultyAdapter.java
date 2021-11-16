@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,8 +76,8 @@ public class FacultyAdapter extends BaseAdapter {
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(_context, UpdateStudentActivity.class);
-                i.putExtra("facultyemail", _data.get(position).email);
+                Intent i = new Intent(_context, UpdateFacultyActivity.class);
+                i.putExtra("facultyid", _ids.get(position));
                 _context.startActivity(i);
             }
         });
@@ -93,7 +94,26 @@ public class FacultyAdapter extends BaseAdapter {
                                 dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        snapshot.getRef().child(_data.get(position).getFullName()).removeValue();
+                                        for(DataSnapshot dss : snapshot.getChildren()){
+                                            String f_id = dss.getKey();
+                                            db.get_dbReference("Batch").addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                    for (DataSnapshot _dss : snapshot.getChildren()){
+                                                        if(_dss.child("faculty_id").getValue(String.class).equals(f_id)){
+                                                            _dss.getRef().child("faculty_id").setValue("");
+                                                        }
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                                }
+                                            });
+                                        }
+                                        //TODO fix this
+                                        snapshot.getRef().child(_ids.get(position)).removeValue();
                                         dialog.dismiss();
                                     }
 
