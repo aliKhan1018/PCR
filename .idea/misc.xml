@@ -15,8 +15,9 @@
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/activity_batch_attendance.xml" value="0.1265625" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/activity_faculty_login.xml" value="0.33" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/activity_faculty_main.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/activity_faculty_splash_screen.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/activity_main.xml" value="0.13272543059777103" />
-        <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/activity_splash_screen.xml" value="0.18" />
+        <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/activity_splash_screen.xml" value="0.5" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/activity_update_faculty.xml" value="0.1609375" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/activity_update_student.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/app_bar_faculty.xml" value="0.27291666666666664" />
@@ -39,7 +40,7 @@
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/nav_header_main.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/spinner_item.xml" value="0.254981884057971" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/vw_batch.xml" value="0.5" />
-        <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/vw_faculty.xml" value="0.25" />
+        <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/vw_faculty.xml" value="0.33" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/vw_student.xml" value="0.33" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/layout/vw_student_attendence.xml" value="0.33" />
         <entry key="..\:/Users/main-aa/AndroidStudioProjects/PCR/app/src/main/res/menu/activity_faculty_drawer.xml" value="0.27291666666666664" />

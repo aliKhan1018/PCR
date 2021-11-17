@@ -89,46 +89,46 @@ public class CreateFacultyFragment extends Fragment {
                 _sGender = radiobtn_selectedGender.getText().toString();
 
                 if (TextUtils.isEmpty(_sFName)) {
-                    edt_fname.setError("First Name is Required");
+                    inputLayout_fname.setError("First Name is Required");
                     edt_fname.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(_sLName)) {
-                    edt_lname.setError("Last Name is Required");
+                    inputLayout_lname.setError("Last Name is Required");
                     edt_lname.requestFocus();
                     return;
                 }
 
                 if (TextUtils.isEmpty(_sEmail)) {
-                    edt_email.setError("Email is Required");
+                    inputLayout_email.setError("Email is Required");
                     edt_email.requestFocus();
                     return;
                 }
                 if(!Patterns.EMAIL_ADDRESS.matcher(_sEmail).matches()) {
-                    edt_email.setError("Enter a Valid Email");
+                    inputLayout_email.setError("Enter a Valid Email");
                     edt_email.requestFocus();
                     return;
                 }
 
                 if (TextUtils.isEmpty(_sPswd)) {
-                    edt_pswd.setError("Password is Required");
+                    inputLayout_pswd.setError("Password is Required");
                     edt_pswd.requestFocus();
                     return;
                 }
                 if (_sPswd.length() > 6) {
-                    edt_pswd.setError("Password must be less than or equal to 6 characters");
+                    inputLayout_pswd.setError("Password must be less than or equal to 6 characters");
                     edt_pswd.requestFocus();
                     return;
                 }
 
                 if(!_sPswd.matches(_sConfirmPswd)){
-                    edt_confirmPswd.setError("Passwords do not match!");
+                    inputLayout_confirmPswd.setError("Passwords do not match!");
                     edt_confirmPswd.requestFocus();
                     return;
                 }
 
                 if (_sContact.length() != 11) {
-                    edt_contact.setError("Contact number must be 11 digits");
+                    inputLayout_contact.setError("Contact number must be 11 digits");
                     edt_contact.requestFocus();
                     return;
                 }
@@ -147,6 +147,9 @@ public class CreateFacultyFragment extends Fragment {
                                 public void onComplete(@NonNull @NotNull Task<Void> task) {
                                     if(task.isComplete()){
                                         Utility.MakeToast(container.getContext(), "Created!", 0);
+                                    }
+                                    else{
+                                        Utility.MakeToast(container.getContext(), task.getException().toString(), 0);
                                     }
                                 }
                             });

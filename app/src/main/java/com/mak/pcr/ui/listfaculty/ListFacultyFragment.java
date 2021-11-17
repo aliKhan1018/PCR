@@ -46,7 +46,7 @@ public class ListFacultyFragment extends Fragment {
         data = new ArrayList<Faculty>();
         ids = new ArrayList<String>();
 
-        db.get_dbReference("Faculty").addListenerForSingleValueEvent(new ValueEventListener() {
+        db.get_dbReference("Faculty").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for(DataSnapshot dss : snapshot.getChildren()){

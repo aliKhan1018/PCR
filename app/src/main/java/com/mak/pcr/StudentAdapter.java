@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,6 +72,23 @@ public class StudentAdapter extends BaseAdapter {
 
         Button btn_update = convertView.findViewById(R.id.btn_update);
         Button btn_delete = convertView.findViewById(R.id.btn_delete);
+
+        txtvw_parentEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:" + data.get(position).parentEmail));
+                context.startActivity(intent);
+            }
+        });
+
+        txtvw_parentContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                sendIntent.setData(Uri.parse("sms:" + data.get(position).parentContact));
+                context.startActivity(sendIntent);
+            }
+        });
 
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override

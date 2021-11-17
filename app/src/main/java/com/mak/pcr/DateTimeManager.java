@@ -7,6 +7,18 @@ import java.util.Date;
 
 public class DateTimeManager {
 
+    public static String getDate(){
+        Calendar calendar;
+        SimpleDateFormat dateFormat;
+        String date;
+
+        calendar = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        date = dateFormat.format(calendar.getTime());
+
+        return date;
+    }
+
     public static String GetDays(){
         SimpleDateFormat _dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date _date = null;

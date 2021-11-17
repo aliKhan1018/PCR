@@ -91,7 +91,6 @@ public class HomeFragment extends Fragment {
                         batchCodeCard.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                //TODO open attendence fragment
                                 startActivity(i);
                             }
                         });

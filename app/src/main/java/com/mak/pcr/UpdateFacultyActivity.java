@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
@@ -51,28 +52,54 @@ public class UpdateFacultyActivity extends AppCompatActivity {
         btn_update = findViewById(R.id.btn_update);
         btn_reset = findViewById(R.id.btn_reset);
 
+        db.get_dbReference("Faculty").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Faculty f = snapshot.child(facultyId).getValue(Faculty.class);
+                edt_fname.setText(f.fname);
+                edt_lname.setText(f.lname);
+                edt_contact.setText(f.contact);
+
+                radiogrp_genders.clearCheck();
+                String gender = f.gender;
+                if (gender.equals("Male")){
+                    radiobtn_male.setChecked(true);
+                }
+                else if (gender.equals("Female")){
+                    radiobtn_female.setChecked(true);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String fname, lname, gender, contact;
                 fname = edt_fname.getText().toString();
                 lname = edt_lname.getText().toString();
                 contact = edt_contact.getText().toString();
                 gender = ((RadioButton)findViewById( radiogrp_genders.getCheckedRadioButtonId() )).getText().toString();
 
-
                 db.get_dbReference("Faculty").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Faculty updatedFaculty = new Faculty(fname, lname, gender, contact);
-                        db.addToDbReference("Faculty", facultyId, updatedFaculty);
+                        snapshot.getRef().child(facultyId).child("fname").setValue(fname);
+                        snapshot.getRef().child(facultyId).child("lname").setValue(lname);
+                        snapshot.getRef().child(facultyId).child("contact").setValue(contact);
+                        snapshot.getRef().child(facultyId).child("gender").setValue(gender);
+                        Utility.MakeToast(UpdateFacultyActivity.this, "Updated!", 0);
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                        Utility.MakeToast(UpdateFacultyActivity.this, error.getMessage().toString(), 1);
                     }
                 });
             }

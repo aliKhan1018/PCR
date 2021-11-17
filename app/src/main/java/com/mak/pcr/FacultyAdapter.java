@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,7 +72,24 @@ public class FacultyAdapter extends BaseAdapter {
 //        txtvw_facultyId.setText(_ids.get(position));
         txtvw_facultyName.setText("Name: " + _data.get(position).getFullName());
         txtvw_facultyEmail.setText("Email: " + _data.get(position).email);
-        txtvw_facultyEmail.setText("Contact: " + _data.get(position).contact);
+        txtvw_facultyContact.setText("Contact: " + _data.get(position).contact);
+
+        txtvw_facultyEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:"+_data.get(position).email));
+                _context.startActivity(intent);
+            }
+        });
+
+        txtvw_facultyContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                sendIntent.setData(Uri.parse("sms:" + _data.get(position).contact));
+                _context.startActivity(sendIntent);
+            }
+        });
 
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +130,6 @@ public class FacultyAdapter extends BaseAdapter {
                                                 }
                                             });
                                         }
-                                        //TODO fix this
                                         snapshot.getRef().child(_ids.get(position)).removeValue();
                                         dialog.dismiss();
                                     }
@@ -133,8 +150,6 @@ public class FacultyAdapter extends BaseAdapter {
                         .show();
             }
         });
-
-        //TODO status
 
         return convertView;
     }

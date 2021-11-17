@@ -43,18 +43,20 @@
                 android:id="@+id/txtvw_facultyEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginLeft="10dp"
                 android:text="Email: ali@abc.com"
+                android:clickable="true"
                 android:textColor="@color/white" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtvw_facultyContact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginLeft="10dp"
                 android:text="Contact: 03302399258"
+                android:clickable="true"
                 android:textColor="@color/white" />
 
             <LinearLayout

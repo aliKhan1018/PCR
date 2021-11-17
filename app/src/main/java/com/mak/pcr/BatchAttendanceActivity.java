@@ -36,8 +36,9 @@ public class BatchAttendanceActivity extends AppCompatActivity {
 
         String _f_id = db.get_firebaseAuth().getUid();
 
-        Intent i = getIntent();
-        String batchCode = i.getStringExtra("batchCode");
+//        Intent i = getIntent();
+//        String batchCode = i.getStringExtra("batchCode");
+        String batchCode = "201910b2 (MWF)";
 
         txtvw_batchCode.setText(batchCode);
 

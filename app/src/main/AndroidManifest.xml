@@ -14,17 +14,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PCR">
         <activity
-            android:name=".UpdateFacultyActivity"
+            android:name=".StudentDetails"
             android:exported="false" />
         <activity
-            android:name=".UpdateStudentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BatchAttendanceActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FacultyMainActivity"
-            android:exported="false" />
+            android:name=".FacultySplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".UpdateFacultyActivity" />
+        <activity android:name=".UpdateStudentActivity" />
+        <activity android:name=".BatchAttendanceActivity"></activity>
+        <activity android:name=".FacultyMainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -37,13 +41,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FacultyLogin">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".FacultyLogin"></activity>
     </application>
 
 </manifest>

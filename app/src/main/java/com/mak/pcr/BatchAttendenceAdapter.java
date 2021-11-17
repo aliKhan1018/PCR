@@ -9,9 +9,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.mak.pcr.dbentities.Faculty;
 import com.mak.pcr.dbentities.Student;
 
@@ -65,18 +69,63 @@ public class BatchAttendenceAdapter extends BaseAdapter {
         LinearLayout linlay_btns = convertView.findViewById(R.id.linlay_btns);
         CardView card_marked = convertView.findViewById(R.id.cardvw_marked);
 
+        db.get_dbReference("Attendance").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.child(DateTimeManager.getDate()).hasChild(_data.get(position).getStudentId())){
+                    linlay_btns.setVisibility(View.GONE);
+                    card_marked.setVisibility(View.VISIBLE);
+                }
+                else{
+                    linlay_btns.setVisibility(View.VISIBLE);
+                    card_marked.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         btn_present.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Utility.MakeToast(_context, _data.get(position).studentId, 0);
-                linlay_btns.setVisibility(View.GONE);
-                card_marked.setVisibility(View.VISIBLE);
+//                Utility.MakeToast(_context, DateTimeManager.getDate(), 1);
+                db.get_dbReference("Attendance").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String _date = DateTimeManager.getDate();
+                        snapshot.getRef().child(_date).child(_data.get(position).getStudentId()).child("isPresent").setValue(true);
+                        linlay_btns.setVisibility(View.GONE);
+                        card_marked.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 
         btn_absent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                db.get_dbReference("Attendance").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String _date = DateTimeManager.getDate();
+                        snapshot.getRef().child(_date).child(_data.get(position).getStudentId()).child("isPresent").setValue(false);
+                        linlay_btns.setVisibility(View.GONE);
+                        card_marked.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
             }
         });

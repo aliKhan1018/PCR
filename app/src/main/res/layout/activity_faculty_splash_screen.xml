@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreen"
+    tools:context=".FacultySplashScreen"
     android:orientation="vertical"
     android:background="@color/black">
 
@@ -30,8 +30,8 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
         android:textColor="@color/theme_primary_variant"
-        android:letterSpacing=".2"
-        android:text="A HIDEO KOJIMA APP"
+        android:letterSpacing=".15"
+        android:text="Faculty App"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
