@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.mak.pcr.DateTimeManager;
 import com.mak.pcr.dbentities.Batch;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,20 +51,21 @@ public class HomeFragment extends Fragment {
 
         txtvw_batchesInSession = root.findViewById(R.id.txtvw_batchesInSession);
 
-        SimpleDateFormat _dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Date _date = null;
-        try {
-            _date = _dateFormat.parse(_dateFormat.format(System.currentTimeMillis()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        SimpleDateFormat _dayFormat = new SimpleDateFormat("EEEE");
-        String _day = _dayFormat.format(_date);
+//        SimpleDateFormat _dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+//        Date _date = null;
+//        try {
+//            _date = _dateFormat.parse(_dateFormat.format(System.currentTimeMillis()));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        SimpleDateFormat _dayFormat = new SimpleDateFormat("EEEE");
+//        String _day = _dayFormat.format(_date);
+//
+//        String _days = (_day.matches("Monday") || _day.matches("Wednesday") || _day.matches("Friday"))
+//                && !_day.matches("Sunday") ?
+//                "MWF" : "TTS";
 
-        String _days = (_day.matches("Monday") || _day.matches("Wednesday") || _day.matches("Friday"))
-                && !_day.matches("Sunday") ?
-                "MWF" : "TTS";
-
+        String _days = DateTimeManager.GetDays();
 
         db.get_dbReference("Batch").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -83,41 +85,7 @@ public class HomeFragment extends Fragment {
                     _startTime = _startTime.substring(0, 5) + ":00";
                     _endTime = _endTime.substring(0, 5) + ":00";
 
-                    Date time1 = null;
-                    try {
-                        time1 = new SimpleDateFormat("HH:mm:ss").parse(_startTime);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    Calendar calendar1 = Calendar.getInstance();
-                    calendar1.setTime(time1);
-                    calendar1.add(Calendar.AM, 1);
-
-                    Date time2 = null;
-                    try {
-                        time2 = new SimpleDateFormat("HH:mm:ss").parse(_endTime);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    Calendar calendar2 = Calendar.getInstance();
-                    calendar2.setTime(time2);
-                    calendar2.add(Calendar.AM, 1);
-
-                    Calendar calendar3 = Calendar.getInstance();
-                    Date d = calendar3.getTime();
-                    String[] _splitDate = d.toString().split(" ");
-                    String _currentTime = _splitDate[3];
-
-                    Date timeNow = null;
-                    try {
-                        timeNow = new SimpleDateFormat("HH:mm:ss").parse(_currentTime);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    calendar3.setTime(timeNow);
-                    calendar3.add(Calendar.AM, 1);
-
-                    if (timeNow.after(time1) && timeNow.before(time2)) {
+                    if(DateTimeManager.IsBetween(_startTime, _endTime)){
                         batchesInSession++;
                     }
 
@@ -128,11 +96,8 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
-
         });
-
 
         return root;
     }

@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.mak.pcr.dbentities.Batch;
+import com.mak.pcr.dbentities.Faculty;
 import com.mak.pcr.dbentities.Student;
 
 import java.util.ArrayList;
@@ -77,10 +78,31 @@ public class BatchAdapter extends BaseAdapter {
         txtvw_batchCode.setText("Batch Code: " + _currentBatch.batchCode);
         txtvw_batchTiming.setText("Time Slot: " + _currentBatch.timings + " (" + _currentBatch.days + ")");
 
-
         if(this.faculty != null){
-            txtvw_batchFaculty.setText("Faculty: " + faculty);
+            txtvw_batchFaculty.setText("Faculty's Name: " + faculty);
         }
+        else {
+            db.get_dbReference("Faculty").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(_currentBatch.faculty_id != null && !_currentBatch.faculty_id.equals("")){
+                        String facultyName = snapshot.child(_currentBatch.faculty_id).getValue(Faculty.class).getFullName();
+                        txtvw_batchFaculty.setText("Faculty's Name: " + facultyName);
+                    }
+                    else{
+                        txtvw_batchFaculty.setText("Faculty's Name: Not Assigned");
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
+
+
 
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override

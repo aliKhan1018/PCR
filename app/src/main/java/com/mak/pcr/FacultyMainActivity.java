@@ -13,6 +13,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -31,7 +32,6 @@ public class FacultyMainActivity extends AppCompatActivity {
     private ActivityFacultyMainBinding binding;
 
     TextView txtvw_facultyName, txtvw_facultyEmail;
-    Button btn_signout;
     DatabaseConnection db;
 
     @Override
@@ -77,8 +77,6 @@ public class FacultyMainActivity extends AppCompatActivity {
                     .setCancelable(false)
                     .show();
         }
-
-
 
 
 //        btn_signout = navigationView.findViewById(R.id.btn_signout);
@@ -129,4 +127,6 @@ public class FacultyMainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }

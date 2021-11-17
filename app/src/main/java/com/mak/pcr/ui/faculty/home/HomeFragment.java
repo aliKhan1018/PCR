@@ -99,14 +99,11 @@ public class HomeFragment extends Fragment {
 
             }
 
-           @Override
-           public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-           }
-       });
-
-
-
+            }
+        });
 
         return root;
     }
